@@ -1,58 +1,39 @@
-import spacy
-import os
+import pandas as pd
+import re
 
-# Definimos los periodos como rangos de años
-PERIODOS = {
-    "1850-1874": (1850, 1874),
-    "1875-1899": (1875, 1899),
-    "1900-1924": (1900, 1924),
-    "1925-1950": (1925, 1950),
-}
+archivo = "/Users/martagcasado/Desktop/pol/anys_histerico_adj_gemini.csv"
 
-def cargar_textos_desde_carpeta(carpeta):
-    textos = {}
-    for archivo in sorted(os.listdir(carpeta)):
-        if archivo.endswith(".txt"):
-            with open(os.path.join(carpeta, archivo), "r", encoding="utf-8") as f:
-                textos[archivo] = f.read()
-    return textos
+df = pd.read_csv(archivo, header=None, names=["documento"])
 
-def asignar_periodo(nombre_archivo):
-    try:
-        año = int(nombre_archivo.split("_")[0])  
-        for periodo, (inicio, fin) in PERIODOS.items():
-            if inicio <= año <= fin:
-                return periodo
-    except ValueError:
-        pass
-    return None  
+df["año"] = df["documento"].str.extract(r"^(\d{4})")
 
-def contar_tokens_por_periodo(textos, max_chars=1_000_000):
-    nlp = spacy.load("es_core_news_lg")
-    nlp.max_length = max_chars
+df = df[df["año"].notna()]
 
-    conteo_periodos = {p: 0 for p in PERIODOS.keys()}
+df["año"] = df["año"].astype(int)
 
-    for archivo, texto in textos.items():
-        periodo = asignar_periodo(archivo)
-        if periodo is None:
-            continue
+def asignar_periodo(anio):
+    s = str(anio)
+    if re.match(r"18[5-6]\d|187[0-4]", s):
+        return "1850-1874"
+    elif re.match(r"187[5-9]|18[8-9]\d|1899", s):
+        return "1875-1899"
+    elif re.match(r"190\d|191\d|192[0-4]", s):
+        return "1900-1924"
+    elif re.match(r"192[5-9]|193\d|194\d|1950", s):
+        return "1925-1950"
+    else:
+        return "Fora de rang"
 
-        fragmentos = [texto[i:i+max_chars] for i in range(0, len(texto), max_chars)]
-        for i, fragmento in enumerate(fragmentos):
-            print(f"Procesando '{archivo}' ({periodo}), fragmento {i+1} de {len(fragmentos)}...")
-            doc = nlp(fragmento)
-            conteo_periodos[periodo] += sum(1 for token in doc if not token.is_punct and not token.is_space)
+# Apliquem la funció
+df["cuarto"] = df["año"].apply(asignar_periodo)
 
-    return conteo_periodos
+# Comptem per períodes
+conteo = df["cuarto"].value_counts().sort_index()
 
-if __name__ == "__main__":
-    carpeta = "/Users/martagcasado/Desktop/textos" 
-    textos = cargar_textos_desde_carpeta(carpeta)
+# Guardem el resultat
+with open("/Users/martagcasado/Desktop/pol/count_por_cuartos_histerico_adj_gemini.txt", "w", encoding="utf-8") as f:
+    for periodo, cantidad in conteo.items():
+        f.write(f"{periodo}: {cantidad}\n")
 
-    print("Textos cargados y procesando con spaCy...")
-    frecuencias = contar_tokens_por_periodo(textos)
+print("Done")
 
-    print("\nFrecuencia de tokens por periodos")
-    for periodo, freq in frecuencias.items():
-        print(f"{periodo}: {freq}")
