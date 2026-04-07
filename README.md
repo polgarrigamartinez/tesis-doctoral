@@ -12,8 +12,8 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
 * **`documentación_corpus/`**: Desglose de textos recopilados para la elaboración de los corpus.
     * `MentEs.xlsx`: Corpus especializado en español.
     * `DeMens.xlsx`: Corpus especializado en alemán.
-    * `español_contraste`.xlsx`: Corpus general en español.
-    * `alemán_contraste`.xlsx`: Corpus general en alemán.
+    * `español_contraste.xlsx`: Corpus general en español.
+    * `alemán_contraste.xlsx`: Corpus general en alemán.
 * **`README.md`**: Guía general del proyecto (este archivo).
 
 ## Tecnologías Utilizadas
