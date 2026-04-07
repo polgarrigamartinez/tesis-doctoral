@@ -10,7 +10,10 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
 * **`cálculo_de_frecuencias/`**: Herramientas para el análisis cuantitativo del corpus.
     * `extractor_años.py`: Script diseñado para localizar y extraer menciones temporales/años en el texto.
 * **`documentación_corpus/`**: Desglose de textos recopilados para la elaboración de los corpus.
-    * `MentEs.xlsx`: Dataset principal (Corpus de Salud Mental en español).
+    * `MentEs.xlsx`: Corpus especializado en español.
+    * `DeMens.xlsx`: Corpus especializado en alemán.
+    * `español_contraste`.xlsx`: Corpus general en español.
+    * `alemán_contraste`.xlsx`: Corpus general en alemán.
 * **`README.md`**: Guía general del proyecto (este archivo).
 
 ## Tecnologías Utilizadas
