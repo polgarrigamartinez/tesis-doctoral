@@ -6,7 +6,7 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
 
 * **`clasificador/`**: Contiene los programas de etiquetado morfológico y clasificación semántica.
     * `spacy_pos_tagger.py`: Programa para el etiquetado morfológico (POS tagging) utilizando la librería spaCy.
-    * 'tabla_contingencia.py': Programa para la elaboración de tablas de contingencia según la clasificación de usos de cada término.
+    * `tabla_contingencia.py`: Programa para la elaboración de tablas de contingencia según la clasificación de usos de cada término.
 * **`cálculo_de_frecuencias/`**: Herramientas para el análisis cuantitativo del corpus.
     * `extractor_años.py`: Script diseñado para localizar y extraer menciones temporales/años en el texto.
 * **`documentación_corpus/`**: Desglose de textos recopilados para la elaboración de los corpus.
