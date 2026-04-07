@@ -8,7 +8,10 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
     * `spacy_pos_tagger.py`: Programa para el etiquetado morfológico (POS tagging) utilizando la librería spaCy.
     * `tabla_contingencia.py`: Programa para la elaboración de tablas de contingencia según la clasificación de usos de cada término.
 * **`cálculo_de_frecuencias/`**: Herramientas para el análisis cuantitativo del corpus.
-    * `extractor_años.py`: Script diseñado para localizar y extraer menciones temporales/años en el texto.
+    * `extractor_años.py`: Programa diseñado para localizar y extraer el año de publicación de cada obra.
+    * `token_count.py`: Programa diseñado para tokenizar y extraer el total de tokens de cada corpus.
+    * `token_count_cuartos.py`: Programa diseñado para tokenizar y extraer el total de tokens de cada cuarto de siglo.
+    * `token_count_decadas.py`: Programa diseñado para tokenizar y extraer el total de tokens de cada década.
 * **`documentación_corpus/`**: Desglose de textos recopilados para la elaboración de los corpus.
     * `MentEs.xlsx`: Corpus especializado en español.
     * `DeMens.xlsx`: Corpus especializado en alemán.
@@ -19,8 +22,8 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
 ## Tecnologías Utilizadas
 
 * **Lenguaje:** Python 3.14.3
-* **Librerías de PLN:** spaCy (https://spacy.io/)
-* **Gestión de Datos:** Microsoft Excel / Pandas
+* **Librería de PLN:** spaCy (https://spacy.io/)
+* **Gestión de Datos:** Microsoft Excel / Pandas / PyTorch
 
 ---
 *Autor: Pol Garriga Martínez*
