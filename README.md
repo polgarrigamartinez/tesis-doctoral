@@ -26,4 +26,4 @@ Este repositorio contiene las herramientas de procesamiento de lenguaje natural 
 * **Gestión de Datos:** Microsoft Excel / Pandas / PyTorch
 
 ---
-*Autor: Pol Garriga Martínez*
+*Autor: Pol Garriga Martínez y Marta Garcia-Casado*
